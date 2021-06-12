@@ -50,6 +50,7 @@ const AmphitryonStyle = StyleSheet.create({
         fontSize: 17,
     },
     ContainerInput:{
+        marginTop: 40,
         alignItems: "center",
     },
     InputData:{
@@ -65,6 +66,7 @@ const AmphitryonStyle = StyleSheet.create({
     ContainerOptions:{
         alignItems: "center",
         flexDirection: "row",
+        marginBottom: 10,
     },
     ButtonEdit:{
         alignItems: "center",

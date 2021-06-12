@@ -25,12 +25,21 @@ const HomeScreen = ({route, navigation}) => {
   }
 
   const goToProfile = () =>{
-    navigation.navigate("Invited", {
-      id: id,
-      nombreCliente: nombreCliente,
-      paisCliente: paisCliente,
-      ciudadCliente: ciudadCliente
-    });
+    if(rol == "INVITADO"){
+      navigation.navigate("Invited", {
+        id: id,
+        nombreCliente: nombreCliente,
+        paisCliente: paisCliente,
+        ciudadCliente: ciudadCliente
+      });
+    }else{
+      navigation.navigate("Amphitryon", {
+        id: id,
+        nombreCliente: nombreCliente,
+        paisCliente: paisCliente,
+        ciudadCliente: ciudadCliente
+      });
+    }
   }
 
   useEffect(()=>{
@@ -57,25 +66,32 @@ const HomeScreen = ({route, navigation}) => {
         <StatusBar backgroundColor={Colors.secondary}></StatusBar>
         <Image source={require('./img/k.png')} style={HomeStyle.logo}></Image>
         <Text style={HomeStyle.Tittle}>RioKo.Com.Co</Text>
+
+        <TouchableOpacity onPress={() => goToProfile()}>
+              <LinearGradient colors={[Colors.primary, Colors.primary]} style={HomeStyle.ButtonUserPerfil}>
+                <Text style={HomeStyle.ButtonText}>MI PERFIL</Text>
+              </LinearGradient>
+        </TouchableOpacity>
       </View>
       <View style={HomeStyle.ContainerList}>
 
       <FlatList 
           data={apartments}
           renderItem={({item})=><TouchableOpacity style={HomeStyle.ItemList} onPress={() =>goToBooking(item)}>
-              <Image source={{ uri: item.urlImagen }} style={{ flex: 1, width: undefined, height: undefined }}/>
-              <Text style={HomeStyle.TextId}>{item._id}</Text>
-              <Text><Text style={HomeStyle.SubTitleItem}>Pais: </Text> {item.pais}</Text>
-              <Text><Text style={HomeStyle.SubTitleItem}>Ciudad:</Text> {item.ciudad}</Text>
-              <Text><Text style={HomeStyle.SubTitleItem}>Dirección:</Text> {item.direccion}</Text>
-              <Text><Text style={HomeStyle.SubTitleItem}>Precio x noche:</Text> 120.000</Text>
+              <View style={HomeStyle.ContainerImage}>
+              <Image source={{ uri: item.urlImagen }} style={{ width: 100, height: 100}}/>
+              </View>
+              <View style={HomeStyle.ContainerApartmentData}>
+                <Text style={HomeStyle.TextId}>{item._id}</Text>
+                <Text><Text style={HomeStyle.SubTitleItem}>Pais: </Text> {item.pais}</Text>
+                <Text><Text style={HomeStyle.SubTitleItem}>Ciudad:</Text> {item.ciudad}</Text>
+                <Text><Text style={HomeStyle.SubTitleItem}>Dirección:</Text> {item.direccion}</Text>
+                <Text><Text style={HomeStyle.SubTitleItem}>Precio x noche:</Text> 120.000</Text>
+              </View>
           </TouchableOpacity>}>
+          <Text><Text style={HomeStyle.SubTitleItem}></Text> </Text>
       </FlatList>
-      <TouchableOpacity onPress={() => goToProfile()}>
-              <LinearGradient colors={[Colors.secondary, Colors.secondary]} style={HomeStyle.ButtonUserPerfil}>
-                <Text style={HomeStyle.ButtonText}>MI PERFIL</Text>
-              </LinearGradient>
-        </TouchableOpacity>
+      <View></View>
       </View>
     </View>
 

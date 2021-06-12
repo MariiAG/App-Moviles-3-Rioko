@@ -15,32 +15,28 @@ const AmphitryonScreen = ({route, navigation}) => {
     const [passwordConfirm, setPasswordConfirm] = useState(contrasenaCliente);
     const [editable, setEditable] = useState(false);
 
-    const goToHome = () =>{
-        navigation.navigate("Home");
-    }
-
     const updateUser = async ()=>{
-    try{
-        const response = await fetch(`https://travelnowapimoviles.herokuapp.com/actualizarCliente/${id}`, {
-          method: 'PUT',
-          headers: {
-            Accept: 'application/json',
-            'Content-Type': 'application/json'
-          },
-          body: JSON.stringify({
-            nombreCliente: name,
-            emailCliente: email,
-            paisCliente: country,
-            ciudadCliente: city,
-            rol: rol,
-            contrasenaCliente: password,
-          })
-        });
-      const responseJson = await response.json();
-      console.log(responseJson);
-    }catch (e){
-        console.log("error inesperado del query");
-    }  
+      try{
+          const response = await fetch(`https://travelnowapimoviles.herokuapp.com/actualizarCliente/${id}`, {
+            method: 'PUT',
+            headers: {
+              Accept: 'application/json',
+              'Content-Type': 'application/json'
+            },
+            body: JSON.stringify({
+              nombreCliente: name,
+              emailCliente: email,
+              paisCliente: country,
+              ciudadCliente: city,
+              rol: rol,
+              contrasenaCliente: password,
+            })
+          });
+        const responseJson = await response.json();
+        console.log(responseJson);
+      }catch (e){
+          console.log("error inesperado del query");
+      }  
     }
 
     const updateInfo = () =>{
@@ -60,6 +56,29 @@ const AmphitryonScreen = ({route, navigation}) => {
         }
     }
 
+    const goToHome = () =>{
+      navigation.navigate("Home", {
+          id: id,
+          nombreCliente: name,
+          emailCliente: email,
+          paisCliente: country,
+          ciudadCliente: city,
+          rol: rol,
+      });
+    }
+
+    const goToList = () =>{
+      navigation.navigate("ListApartments",{
+        idA: id,
+      });
+    }
+
+    const createApartment = () =>{
+      navigation.navigate("CreateApartment", {
+        id: id,
+      });
+    }
+
     return <View style={AmphitryonStyle.container}>
     <ScrollView>
       <View style={AmphitryonStyle.ContainerTitle}>
@@ -73,9 +92,14 @@ const AmphitryonScreen = ({route, navigation}) => {
               <Text style={AmphitryonStyle.ButtonText}>Ver pagina principal</Text>
             </LinearGradient>
           </TouchableOpacity>
-          <TouchableOpacity>
+          <TouchableOpacity onPress={() => goToList()}>
             <LinearGradient colors={[Colors.primary, Colors.primary]} style={AmphitryonStyle.ButtonSearch}>
               <Text style={AmphitryonStyle.ButtonText}>Ver mis apartamentos</Text>
+            </LinearGradient>
+          </TouchableOpacity>
+          <TouchableOpacity onPress={() =>createApartment()}>
+            <LinearGradient colors={[Colors.primary, Colors.primary]} style={AmphitryonStyle.ButtonSearch}>
+              <Text style={AmphitryonStyle.ButtonText}>Agregar Apartamento</Text>
             </LinearGradient>
           </TouchableOpacity>
       

@@ -40,7 +40,7 @@ const CreateUserScreen = ({navigation}) => {
         Alert.alert("Error", "Todos los campos del formulario deben estar llenos");
       }else{
         if(password == passwordConfirm){
-          Alert.alert("Error", "Usuario creado con éxito");
+          Alert.alert("Info", "Usuario creado con éxito");
           createUser();
           navigation.navigate("Login");
         }else{

@@ -31,6 +31,7 @@ const BookingScreen = ({route, navigation}) => {
     }
 
     const createUser = async ()=>{
+      try{
         const response = await fetch("https://travelnowapimoviles.herokuapp.com/reservar", {
           method: 'POST',
           headers: {
@@ -46,16 +47,19 @@ const BookingScreen = ({route, navigation}) => {
         });
       const responseJson = await response.json();
       console.log(responseJson);
+      }catch (e){
+        console.log("error indefinido en el query")
+      }  
     }
 
     const apBooking = () =>{
         if(departure == "" || arrival == "" || departure == null || arrival == null){
             Alert.alert("Error", "No ha introducido las fechas de la reserva");
         }else{
-            Alert.alert("Fantastico", "Apartamento reservado correctamente");
+            Alert.alert("Fantastico", "El partamento ha sido reservado");
             createUser();
             navigation.navigate("ListBookings", {
-                idUs: id,
+                idUs: idUs,
             });
         }
     }
@@ -81,7 +85,6 @@ try{
         <Text style={HomeStyle.TextBooking}>{country} / {city}</Text>
         <Text style={HomeStyle.TextBooking}>Dirección: {address}</Text>
 
-        {/* <Text style={HomeStyle.TextBooking}>¿En que fechas planeas viajar?</Text> */}
         <DatePicker
           style={HomeStyle.DatePickerStyle}
           date={arrival} // Initial date from state
