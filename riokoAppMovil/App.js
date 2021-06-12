@@ -1,8 +1,35 @@
 import React from 'react';
 import LoginScreen from './src/auth/login/LoginScreen';
+import HomeScreen from './src/sessions/home/HomeScreen';
+import BookingScreen from './src/sessions/home/BookingScreen';
+import InvitedScreen from './src/sessions/invited/InvitedScreen';
+import ListBookings from './src/sessions/invited/ListBookingsScreen';
+import AmphitryonScreen from './src/sessions/amphitryon/AmphitryonScreen';
+import CreateUserScreen from './src/auth/create-user/CreateUserScreen';
+import { NavigationContainer } from '@react-navigation/native';
+import { createStackNavigator } from '@react-navigation/stack';
+import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
+import { View } from 'react-native';
+
+const Stack = createStackNavigator();
+const Tab = createBottomTabNavigator();
 
 const App = () => {
-  return <LoginScreen></LoginScreen>
-};
+  return (
+      <NavigationContainer>
+          <Stack.Navigator>
+            <Stack.Screen name="Login" component={LoginScreen} options={{headerShown: false}} />
+            <Stack.Screen name="Registrarme" component={CreateUserScreen} options={{headerShown: false}} /> 
+            <Stack.Screen name="Home" component={HomeScreen} options={{headerShown: false}} />
+            <Stack.Screen name="Booking" component={BookingScreen} options={{headerShown: false}} />
+            <Stack.Screen name="Invited" component={InvitedScreen} options={{headerShown: false}} />
+            <Stack.Screen name="ListBookings" component={ListBookings} options={{headerShown: false}} />
+            <Stack.Screen name="Amphitryon" component={AmphitryonScreen} options={{headerShown: false}} />
+          </Stack.Navigator>
+      </NavigationContainer>
+  );
+}
 
 export default App;
+
+

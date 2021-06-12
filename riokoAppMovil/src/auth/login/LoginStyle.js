@@ -21,9 +21,7 @@ const LoginStyle = StyleSheet.create({
         },
         shadowOpacity: 0.55,
         shadowRadius: 14.78,
-        
         elevation: 22,
-        
     },
     logo:{
         width: 150,
@@ -51,7 +49,7 @@ const LoginStyle = StyleSheet.create({
         borderTopRightRadius: 55,
         backgroundColor: "black",
         top: 40,
-        height: Dimensions.get("screen").height*0.22,
+        height: Dimensions.get("screen").height*0.18,
         alignItems: "center",
         shadowColor: "#000",
         shadowOffset: {
@@ -63,21 +61,20 @@ const LoginStyle = StyleSheet.create({
         elevation: 22,
     },
     inputData:{
-        marginTop: 18,
+        marginTop: 25,
         fontSize: 15,
         backgroundColor: "white",
-        padding: 5,
+        padding: 2,
         color: "orangered",
         fontWeight: "700",
         textAlign: "center",
         borderRadius: 20,
         width: Dimensions.get("screen").width*0.75,
-
     },
     LoginButton:{
         borderRadius: 20,
         width: Dimensions.get("screen").width*0.75,
-        marginTop: 25,
+        marginTop: 12,
         padding: 10,
         alignItems: "center",
     },
@@ -95,9 +92,9 @@ const LoginStyle = StyleSheet.create({
     },
     CreateContainer:{
         alignItems: "center",
-        marginTop: 40,
+        marginTop: 35,
         backgroundColor: "#e65100",
-        height: Dimensions.get("screen").height*0.15,
+        height: Dimensions.get("screen").height*0.20,
     },
     CreateAccount:{
         borderRadius: 20,
