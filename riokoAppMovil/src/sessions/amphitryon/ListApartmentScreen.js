@@ -12,21 +12,21 @@ const ListApartmentScreen = ({route, navigation}) => {
     const [apartments, setApartments] = useState();
     const [ID, setID] = useState("");
 
-    let amphi = idA; 
-    const getBookings = async () => {
-      try{
-        const response = await fetch(`https://travelnowapimoviles.herokuapp.com/buscarApartamento`);
-        const dataResponse = await response.json();
-        let result;
-        result = dataResponse.mensaje.filter(function(anfitrion){
-          return(anfitrion.cliente==amphi)
-        })
-        setApartments(result);
-        // setApartments(dataResponse.mensaje);
-        console.log(dataResponse.mensaje);
-      }catch (e){
-        console.log("error indefinido en el query")
-      }  
+  let amphi = idA; 
+  const getBookings = async () => {
+    try{
+      const response = await fetch(`https://travelnowapimoviles.herokuapp.com/buscarApartamento`);
+      const dataResponse = await response.json();
+      let result;
+      result = dataResponse.mensaje.filter(function(anfitrion){
+        return(anfitrion.cliente==amphi)
+      })
+      setApartments(result);
+      // setApartments(dataResponse.mensaje);
+      console.log(dataResponse.mensaje);
+    }catch (e){
+      console.log("error indefinido en el query")
+    }  
   }
 
   const deleteApartment = async () => {
@@ -108,6 +108,7 @@ try{
         <View style={ListBookingStyle.ContainerList}>
         <FlatList 
           data={apartments}
+          keyExtractor={item => item._id}
           renderItem={({item})=><TouchableOpacity style={ListBookingStyle.ItemList}>
               <View style={ListBookingStyle.ContainerImage}>
                 <Image source={{ uri: item.urlImagen }} style={{ width: 100, height: 100}}/>

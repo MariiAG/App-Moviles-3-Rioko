@@ -77,6 +77,7 @@ const HomeScreen = ({route, navigation}) => {
 
       <FlatList 
           data={apartments}
+          keyExtractor={item => item._id}
           renderItem={({item})=><TouchableOpacity style={HomeStyle.ItemList} onPress={() =>goToBooking(item)}>
               <View style={HomeStyle.ContainerImage}>
               <Image source={{ uri: item.urlImagen }} style={{ width: 100, height: 100}}/>

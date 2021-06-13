@@ -64,7 +64,13 @@ const InvitedScreen = ({route, navigation}) => {
             paisCliente: country,
             ciudadCliente: city,
             rol: rol,
-          });
+      });
+    }
+
+    const goToList = () =>{
+      navigation.navigate("ListBookings",{
+        idUs: id,
+      });
     }
 
   return <View style={InvitedStyle.container}>
@@ -80,7 +86,7 @@ const InvitedScreen = ({route, navigation}) => {
                 <Text style={InvitedStyle.ButtonText}>Buscar apartamentos</Text>
               </LinearGradient>
             </TouchableOpacity>
-            <TouchableOpacity>
+            <TouchableOpacity onPress={() => goToList()}>
               <LinearGradient colors={[Colors.primary, Colors.primary]} style={InvitedStyle.ButtonSearch}>
                 <Text style={InvitedStyle.ButtonText}>Ver mis reservas</Text>
               </LinearGradient>

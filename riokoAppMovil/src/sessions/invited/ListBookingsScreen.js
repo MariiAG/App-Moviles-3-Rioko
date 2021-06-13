@@ -40,7 +40,7 @@ const ListBookingsScreen = ({route, navigation}) => {
         const jsonResponse = await response.json();
         console.log(jsonResponse)
     } catch (e) {
-        Alert.alert("Hubo un error inesperado, vuelva a intentarlo más tarde");
+      console.log("Hubo un error inesperado, vuelva a intentarlo más tarde");
     }
   }
 
@@ -65,23 +65,23 @@ const ListBookingsScreen = ({route, navigation}) => {
   }
 
   const validateSeeApartment = (item) =>{
-    Alert.alert(
-      "Info",
-      "¿Quiere ver el apartamento que ha reservado?",
-      [
-        {
-          text: "Cancel",
-          onPress: () => console.log("Cancel Pressed"),
-          style: "cancel"
-        },
-        { text: "OK", onPress: () => {
-          navigation.navigate("UpdateApartment", {
+    // Alert.alert(
+    //   "Info",
+    //   "¿Quiere ver el apartamento que ha reservado?",
+    //   [
+    //     {
+    //       text: "Cancel",
+    //       onPress: () => console.log("Cancel Pressed"),
+    //       style: "cancel"
+    //     },
+    //     { text: "OK", onPress: () => {
+          navigation.navigate("ApartmentViewScreen", {
             idAp: item,
           });
-          } 
-        }
-      ]
-    );
+    //       } 
+    //     }
+    //   ]
+    // );
   }
 
   useEffect(()=>{
@@ -101,6 +101,7 @@ try{
         <View style={ListBookingStyle.ContainerList}>
         <FlatList 
           data={booking}
+          keyExtractor={item => item._id}
           renderItem={({item})=><TouchableOpacity style={ListBookingStyle.ItemList} onPress={() =>goToBooking(item)}>
               <Text><Text style={ListBookingStyle.SubTitleItem}>Fecha de llegada: </Text> {item.fechaInicio}</Text>
               <Text><Text style={ListBookingStyle.SubTitleItem}>Fecha de salida: </Text> {item.fechaFinal}</Text>

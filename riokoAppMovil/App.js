@@ -4,6 +4,7 @@ import HomeScreen from './src/sessions/home/HomeScreen';
 import BookingScreen from './src/sessions/home/BookingScreen';
 import InvitedScreen from './src/sessions/invited/InvitedScreen';
 import ListBookings from './src/sessions/invited/ListBookingsScreen';
+import ApartmentViewScreen from './src/sessions/invited/ApartmentViewScreen';
 import AmphitryonScreen from './src/sessions/amphitryon/AmphitryonScreen';
 import CreateApartment from './src/sessions/amphitryon/CreateApartment';
 import UpdateApartment from './src/sessions/amphitryon/UpdateApartment';
@@ -27,6 +28,7 @@ const App = () => {
             <Stack.Screen name="Booking" component={BookingScreen} options={{headerShown: false}} />
             <Stack.Screen name="Invited" component={InvitedScreen} options={{headerShown: false}} />
             <Stack.Screen name="ListBookings" component={ListBookings} options={{headerShown: false}} />
+            <Stack.Screen name="ApartmentViewScreen" component={ApartmentViewScreen} options={{headerShown: false}} />
             <Stack.Screen name="Amphitryon" component={AmphitryonScreen} options={{headerShown: false}} />
             <Stack.Screen name="CreateApartment" component={CreateApartment} options={{headerShown: false}} />
             <Stack.Screen name="ListApartments" component={ListApartmentScreen} options={{headerShown: false}} />
@@ -37,5 +39,7 @@ const App = () => {
 }
 
 export default App;
+
+ApartmentViewScreen
 
 
